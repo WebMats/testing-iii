@@ -19,3 +19,15 @@ describe('when gate is locked', () => {
         expect(toggleOpenClose).not.toHaveBeenCalled()
     })
 })
+
+test('should provide button to toggle closed and locked', () => {
+    const state = {
+        locked: true, 
+        closed: null
+    }
+    const { getByTestId } = render(<Controls {...state} />)
+    const toggleCloseButton = getByTestId(/toggle-close/i)
+    const toggleLockButton = getByTestId(/toggle-locked/i)
+    expect(toggleCloseButton).toBeDefined()
+    expect(toggleLockButton).toBeDefined()
+})
