@@ -27,3 +27,11 @@ test('should use the red-led class when locked/closed', () => {
     expect(lockState.className.split(' ')[1]).toEqual('red-led')
     expect(closeState.className.split(' ')[1]).toEqual('red-led')
 })
+
+test('should use the green-led class when locked/closed', () => {
+    const { getByTestId } = render(<Display locked={true} closed={true} />);
+    const lockState = getByTestId(/div-lock-state/i)
+    const closeState = getByTestId(/div-close-state/i)
+    expect(lockState.className.split(' ')[1]).toEqual('red-led')
+    expect(closeState.className.split(' ')[1]).toEqual('red-led')
+})
