@@ -1,9 +1,14 @@
 import React from 'react'
 import { render, cleanup, fireEvent } from 'react-testing-library'
 import Dashboard from './Dashboard';
-import '../display/Display';
+import Display from '../display/Display';
+import Controls from '../controls/Controls';
+import renderer from 'react-test-renderer';
 
 
-test('should default state to unlocked and open', () => {
-    const utils = render(<Dashboard />);
+test('show controls and display', () => {
+    // const { getByTestId } = render(<Dashboard />);
+    // const tree = renderer.create(<Dashboard />);
+    // const template = renderer.create(<><Display/><Controls/></>)
+    // expect(tree.toJSON()).toEqual(template.toJSON())
 })
