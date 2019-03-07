@@ -39,7 +39,19 @@ test('should change the text as the state changes', () => {
     const updatedState = { locked: true, closed: true }
     rerender(<Controls {...updatedState} />)
     const toggleCloseButtonTextAfter = getByTestId(/toggle-close/i).textContent
-    const toggleLockButtoTextAfter = getByTestId(/toggle-locked/i).textContent
+    const toggleLockButtonTextAfter = getByTestId(/toggle-locked/i).textContent
     expect(toggleCloseButtonTextAfter).toEqual('Open Gate')
-    expect(toggleLockButtoTextAfter).toEqual('Unlock Gate')
+    expect(toggleLockButtonTextAfter).toEqual('Unlock Gate')
+})
+test('should disable close toggle button if the gate is locked', () => {
+    const state = { locked: true, closed: null }
+    const { getByTestId } = render(<Controls {...state} />)
+    const toggleCloseButton = getByTestId(/toggle-close/i)
+    expect(toggleCloseButton.disabled).not.toBeFalsy()
+})
+test('should disable lock toggle button if the gate is open', () => {
+    const state = { locked: null, closed: false }
+    const { getByTestId } = render(<Controls {...state} />)
+    const toggleLockButton = getByTestId(/toggle-locked/i)
+    expect(toggleLockButton.disabled).not.toBeFalsy()
 })
