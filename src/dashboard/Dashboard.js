@@ -16,6 +16,7 @@ class Dashboard extends React.Component {
       <>
         <Display locked={locked} closed={closed} />
         <Controls
+          data-testid="controls"
           locked={locked}
           closed={closed}
           toggleLocked={this.toggleLocked}
